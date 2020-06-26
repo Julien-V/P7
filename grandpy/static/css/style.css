@@ -1,0 +1,75 @@
+body {
+	margin: 0px;
+}
+
+header {
+	background-color: grey;
+	color: white;
+	display: flex;
+	margin-bottom: 1%
+}
+
+#chat {
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+}
+
+#displayMsg {
+    padding: 1%;
+    margin-bottom: 0.5%;
+    border-color: grey;
+    border-width: thin;
+    border-style: solid;
+    overflow: auto;
+    height: 80ch;
+}
+
+#user-action {
+	display: flex;
+}
+
+#inputText {
+	display: inline-flex;
+    width: 95%;
+}
+
+#btnSend {
+	width: 5%;
+    display: inline-flex;
+}
+
+.msg {
+	border: thin solid #dedede;
+	background-color: #f1f1f1;
+	border-radius: 2px;
+	padding: 1%;
+	margin: 1% 0;
+}
+
+.map {
+	height: 20ch;
+}
+
+.user {
+	border-color: #ccc;
+	background-color: #ddd;
+}
+
+.msg::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+
+
+footer {
+	background-color: grey;
+	color: white;
+	display: flex;
+	margin-top: 1%
+}
+
+footer.a {
+	color: white;
+}
