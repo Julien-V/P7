@@ -18,7 +18,8 @@ class GMaps_API(api.GetAPI):
         # so let's select the first one ...
         # yep, i didn't read enough the doc
         # i learned it the hard way x)
-        if len(response['candidates']):
-            return response['candidates'][0]
+        if "candidates" in response.keys():
+            if len(response['candidates']):
+                return response['candidates'][0]
         else:
             return None
