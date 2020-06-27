@@ -37,7 +37,7 @@ class TestGMaps_API:
 
         monkeypatch.setattr(GMaps_API, "get_and_load", mock_get_and_load)
         result = self.g_maps.run()
-        assert (result['formatted_address'])
+        assert (isinstance(result['formatted_address'], str))
 
     def test_run_invalid(self, monkeypatch):
         def mock_get_and_load(*args):

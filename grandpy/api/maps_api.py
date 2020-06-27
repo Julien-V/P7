@@ -13,11 +13,6 @@ class GMaps_API(api.GetAPI):
 
     def run(self):
         response = self.get_and_load()
-        # we have one key 'candidates' in response dict
-        # its value is a list of possible candidates
-        # so let's select the first one ...
-        # yep, i didn't read enough the doc
-        # i learned it the hard way x)
         if "candidates" in response.keys():
             if len(response['candidates']):
                 return response['candidates'][0]

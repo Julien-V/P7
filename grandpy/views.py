@@ -12,7 +12,6 @@ app = Flask(__name__)
 app.config.from_object('config.DevelopmentConfig')
 app.config.from_envvar('GRANDPY_SETTINGS')
 app.config['G_API_PARAMS']["key"] = app.config['MAPS_API_KEY']
-print(app.config)
 
 gp = GrandPy()
 
@@ -58,5 +57,4 @@ def ask():
         response=result['gp'],
         g_maps=result['map'],
         wiki=result['wiki'])
-    print(f"GP : {json}")
     return json
