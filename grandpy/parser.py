@@ -15,6 +15,9 @@ class GrandPy(object):
         # add some greetings to self.stop_words
         greetings = 'bonjour hey salut hello'
         self.stop_words += greetings.split()
+        # add more words to self.stop_words
+        words = "grandpy connais adresse situe"
+        self.stop_words += words.split()
         # add punctuation to self.stop_words
         self.punctuation = "c' d' j' l' m' n' s' t' u' y'".split()
         self.punctuation += list(string.punctuation)
@@ -24,7 +27,7 @@ class GrandPy(object):
         # remove punctuation
         for elem in self.punctuation:
             if elem in query:
-                query = query.replace(elem, '')
+                query = query.replace(elem, ' ')
         # remove stop words
         parsed_query = list()
         for word in query.split():
@@ -32,7 +35,8 @@ class GrandPy(object):
                 parsed_query.append(word)
         # rewrite parsed_query into str with space :
         parsed_query = ''.join(f'{x} ' for x in parsed_query)
-        return parsed_query
+        # return parsed query without final space
+        return parsed_query[:-1]
 
     def think(self, result):
         result['gp'] = None

@@ -22,7 +22,7 @@ class TestGrandPy:
 
     def test_parse(self):
         PARSED = self.PARSER.parse(self.TO_PARSE)
-        assert (PARSED == "grandpy estce connais adresse openclassrooms ")
+        assert (PARSED == "openclassrooms")
 
     def test_think(self):
         RESULT = self.PARSER.think(self.RESULT_API)
