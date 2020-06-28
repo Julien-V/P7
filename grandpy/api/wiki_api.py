@@ -13,7 +13,10 @@ class Wikipedia_API(api.GetAPI):
 
     def run(self):
         response = self.get_and_load()
-        pages_dict = response['query']['pages']
+        try:
+            pages_dict = response['query']['pages']
+        except KeyError:
+            return None
         first_key = next(iter(pages_dict))
         if first_key != "-1":
             page = pages_dict[first_key]
