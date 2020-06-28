@@ -1,21 +1,20 @@
-$(document).ready(function() {
-	$("#user-action").submit(function(e){
-		e.preventDefault(e);
-		ask($(this));
-	});
-	// global mapsNumber
-	mapNumber = 0;
+
+var form = document.querySelector("#user-action");
+form.addEventListener('submit', function(e) {
+	e.preventDefault(e);
+	ask(form);
 });
+// global mapsNumber
+mapNumber = 0;
 
 function displayInChat(msg) {
-	$('#displayMsg').append(msg);
-	var chat = document.querySelector('#displayMsg');
-	chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+	var displayMsg = document.querySelector("#displayMsg");
+	displayMsg.insertAdjacentHTML('beforeend', msg);
+	displayMsg.scrollTop = displayMsg.scrollHeight - displayMsg.clientHeight;
 }
 
 function processResponse(json) {
 	// format grandpy's response
-	console.log(json)
 	var msg = "<div class='msg'>";
 	msg += "<p>"+json.response+"</p>";
 	msg += "</div>";
@@ -28,9 +27,9 @@ function processResponse(json) {
 		var f_address = param_map.formatted_address;
 		// display div map
 		var mapId = "maps-"+mapNumber.toString();
-		var msg = "<div class='msg map' id='"+mapId+"'>";
-		msg += "</div>";
-		displayInChat(msg);
+		var msg_maps = "<div class='msg map' id='"+mapId+"'>";
+		msg_maps += "</div>";
+		displayInChat(msg_maps);
 		// display G Maps
 		var map = new google.maps.Map(document.getElementById(mapId), {
 			center: geometry.location,
@@ -43,10 +42,10 @@ function processResponse(json) {
 	// get json.wiki
 	var param_wiki = json.wiki;
 	if (param_wiki != null) {
-		var wTitle = param_wiki.title;
-		var wText = param_wiki.extract;
-		var wUrl = param_wiki.url;
-		var msg = "<div class='msg'>";
+		let wTitle = param_wiki.title;
+		let wText = param_wiki.extract;
+		let wUrl = param_wiki.url;
+		let msg = "<div class='msg'>";
 		msg += "<p>"+wText+"</p>";
 		msg += "<a href='"+wUrl+"'>[En savoir plus sur Wikipedia]</a>"
 		msg += "</div>";
@@ -55,24 +54,25 @@ function processResponse(json) {
 	//return false;
 };
 
-function ask(form) {
-	var url = form.attr('action');
-	var data = form.serialize();
-	// var text = data.substring(data.search("=")+1) faster ?
-	var text = $('#inputText').val();
-	$('#inputText').val('');
+async function ask(form) {
+	let url = form.getAttribute('action');
+	let data = new FormData(form);
+	let inputText = document.querySelector("#inputText");
+	let text = inputText.value;
+	inputText.value = '';
 	// format text
-	var msg = "<div class='msg user'>";
+	let msg = "<div class='msg user'>";
 	msg += "<p>"+text+"</p>";
 	msg += "</div>";
 	// display msg
 	displayInChat(msg);
 	// ask grandpy
-	$.post(
-		url,
-		data,
-		processResponse,
-		'json'
-	);
+	let params = {
+		method: 'POST',
+		body: data
+	};
+	let response = await fetch(url, params);
+	let rep = await response.json()
+	processResponse(rep);
 };
 
