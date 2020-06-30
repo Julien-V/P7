@@ -1,75 +1,86 @@
 body {
-	margin: 0px;
+  margin: 0px;
+  height: 100%;
 }
 
 header {
-	background-color: grey;
-	color: white;
-	display: flex;
-	margin-bottom: 1%
+  background-color: grey;
+  color: white;
+  display: flex;
+  margin-bottom: 1%;
+  height: 9%;
 }
 
 #chat {
-	margin-left: 0.5%;
-	margin-right: 0.5%;
+  margin-top: 0.5%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  height: 80%;
 }
 
 #displayMsg {
-    padding: 1%;
-    margin-bottom: 0.5%;
-    border-color: grey;
-    border-width: thin;
-    border-style: solid;
-    overflow: auto;
-    height: 80ch;
+  padding: 1%;
+  padding-top: 0.2%;
+  margin-bottom: 0.5%;
+  border-color: grey;
+  border-width: thin;
+  border-style: solid;
+  overflow: auto;
+  height: 90%;
 }
 
 #user-action {
-	display: flex;
+  display: flex;
+  flex-direction: row;
+  height:5.5%;
 }
 
 #inputText {
-	display: inline-flex;
-    width: 95%;
+  width: 95%;
 }
 
 #btnSend {
-	width: 5%;
-    display: inline-flex;
+  width: 5%;
+  height:100%;
 }
 
 .msg {
-	border: thin solid #dedede;
-	background-color: #f1f1f1;
-	border-radius: 2px;
-	padding: 1%;
-	margin: 1% 0;
+  border: thin solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  padding: 1%;
+  margin: 1% 0;
 }
 
 .map {
-	height: 20ch;
+  height: 40%;
 }
 
 .user {
-	border-color: #ccc;
-	background-color: #ddd;
+  border-color: #ccc;
+  background-color: #ddd;
 }
 
 .msg::after {
-	content: "";
-	clear: both;
-	display: table;
+  content: "";
+  clear: both;
+  display: table;
 }
 
-
-
 footer {
-	background-color: grey;
-	color: white;
-	display: flex;
-	margin-top: 1%
+  background-color: grey;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 9%
 }
 
 footer.a {
-	color: white;
+  color: white;
+  margin-left: 1px;
+}
+
+footer.p {
+  margin: 0px 0px 0px 0px;
 }
