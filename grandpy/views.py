@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # coding : utf-8
 
+import os
+
 from flask import Flask, render_template
 from flask import jsonify, request
 
@@ -9,8 +11,13 @@ from grandpy.api.maps_api import GMaps_API
 from grandpy.api.wiki_api import Wikipedia_API
 
 app = Flask(__name__)
-app.config.from_object('config.DevelopmentConfig')
-app.config.from_envvar('GRANDPY_SETTINGS')
+app.config.from_object('config.Config')
+
+is_prod = os.environ.get('IS_HEROKU', None)
+if not is_prod:
+    app.config.from_envvar('GRANDPY_SETTINGS')
+else:
+    app.config['MAPS_API_KEY'] = os.environ.get('MAPS_API_KEY', None)
 app.config['G_API_PARAMS']["key"] = app.config['MAPS_API_KEY']
 
 gp = GrandPy()
