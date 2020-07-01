@@ -5,14 +5,14 @@ from grandpy.api import api
 
 
 class Wikipedia_API(api.GetAPI):
-    def __init__(self, url, param, query):
+    def __init__(self, url, param, query, p_query):
         self.query = query
         self.param = param
         self.param["titles"] = self.query
+        self.p_query = p_query
         super().__init__(url, param)
 
-    def run(self):
-        response = self.get_and_load()
+    def process(self, response):
         try:
             pages_dict = response['query']['pages']
         except KeyError:
@@ -29,3 +29,14 @@ class Wikipedia_API(api.GetAPI):
             return output
         else:
             return None
+
+    def run(self):
+        response = self.get_and_load()
+        output = self.process(response)
+        if output is not None:
+            return output
+        else:
+            self.param['titles'] = self.p_query
+            response = self.get_and_load()
+            output = self.process(response)
+            return output

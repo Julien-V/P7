@@ -51,7 +51,11 @@ class TestGMaps_API:
 
 
 class TestWikipedia_API:
-    wiki = Wikipedia_API("http://wikipedia.etc", {'param': "test"}, "query")
+    wiki = Wikipedia_API(
+        "http://wikipedia.etc",
+        {'param': "test"},
+        "query",
+        "p_query")
 
     def test_run_valid(self, patch_get_and_load):
         patch_get_and_load.values = j("valid_wiki.json")

@@ -11,7 +11,7 @@ from grandpy.api.maps_api import GMaps_API
 from grandpy.api.wiki_api import Wikipedia_API
 
 app = Flask(__name__)
-app.config.from_object('config.Config')
+app.config.from_object('config.DevelopmentConfig')
 
 is_prod = os.environ.get('IS_HEROKU', None)
 if not is_prod:
@@ -50,7 +50,8 @@ def ask():
         wiki_api = Wikipedia_API(
             wiki_url,
             wiki_params,
-            result['map']['name'])
+            result['map']['name'],
+            p_query)
         result['wiki'] = wiki_api.run()
         if result['wiki'] is not None:
             page_id = result['wiki']['page_id']
