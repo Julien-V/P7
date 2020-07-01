@@ -34,7 +34,7 @@ python3 -m main.py
 ```
 ## Lancement
 ```
-python3 -m main.py
+python3 main.py
 ```
 
 * `python3 --version` : Python 3.8.3
