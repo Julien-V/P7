@@ -13,6 +13,7 @@ class Config(object):
     G_API_PARAMS = {
         'inputtype': 'textquery',
         'input': "",
+        'language': 'fr',
         'fields': "formatted_address,name,geometry",
     }
     W_API_URL = (
