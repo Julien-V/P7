@@ -71,8 +71,12 @@ async function ask(form) {
 		method: 'POST',
 		body: data
 	};
-	let response = await fetch(url, params);
-	let rep = await response.json()
-	processResponse(rep);
+	try {
+		let response = await fetch(url, params);
+		let rep = await response.json()
+		processResponse(rep);
+	} catch (error) {
+		console.error(error);
+	}
 };
 

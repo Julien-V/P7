@@ -30,7 +30,7 @@ virtualenv Project7
 cd Project7
 source bin/activate
 pip install -r requirements.txt
-python3 -m main.py
+python3 main.py
 ```
 ## Lancement
 ```
