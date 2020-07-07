@@ -10,6 +10,7 @@ from grandpy.parser import GrandPy
 from grandpy.api.maps_api import GMaps_API
 from grandpy.api.wiki_api import Wikipedia_API
 
+# app creation and config
 app = Flask(__name__)
 app.config.from_object('config.Config')
 

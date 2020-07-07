@@ -6,12 +6,14 @@ import requests
 
 
 class GetAPI(object):
-    """Base Class for all *_API class"""
+    """Base Class for all *_API class
+        Send a request to url with a dict of param
+    :return: json response in a dict
+    """
     def __init__(self, url, param):
         """This method initializes the class
-        :param param: url arguments for the request
-        :param db: database object
-        :param cat_id: categorie id in table Categories
+        :param url: url for the request
+        :param param: params for request.get(), arguments to pass in url
         """
         self.url = url
         self.param = param

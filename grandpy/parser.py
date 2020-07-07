@@ -39,6 +39,11 @@ class GrandPy(object):
         return parsed_query[:-1]
 
     def think(self, result):
+        """This method formats the result in a
+        text that will be displayed (grandpy's responses)
+        :param result: dict, with "map" key
+        :return: result dict with a new key "gp"
+        """
         result['gp'] = None
         if result['map'] is None:
             gp_response = "Ça ne me dit rien du tout !"
