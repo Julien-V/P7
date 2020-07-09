@@ -11,6 +11,11 @@ header {
   height: 9%;
 }
 
+header > h1 {
+  margin-block-start: 0;
+  font-size: calc(100% + 2vh);
+}
+
 #chat {
   margin-top: 0.5%;
   margin-left: 0.5%;
@@ -76,11 +81,8 @@ footer {
   height: 9%
 }
 
-footer.a {
-  color: white;
+footer > a {
+  color: blue;
   margin-left: 1px;
-}
-
-footer.p {
-  margin: 0px 0px 0px 0px;
+  margin-top: 1em;
 }
