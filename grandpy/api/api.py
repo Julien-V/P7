@@ -23,8 +23,9 @@ class GetAPI(object):
     def get_and_load(self):
         """This method does the request and decode returned JSON
         :return: JSON decoded by json.loads()"""
+        failstack = 0
         requesting = True
-        while requesting:
+        while requesting and failstack <= 3:
             try:
                 r = requests.get(
                     self.url,
@@ -33,7 +34,14 @@ class GetAPI(object):
                 requesting = False
             except requests.exceptions.Timeout:
                 print("[!] Timeout.")
+                failstack += 1
             except requests.exceptions.RequestException as e:
                 print(f"[!] Error : {e}")
-        result = json.loads(r.text)
+                failstack += 1
+        # if requesting, failstack > 3
+        # so r.text do
+        if not requesting:
+            result = json.loads(r.text)
+        else:
+            result = dict()
         return result
